@@ -1,22 +1,7 @@
-# Multiple Blink
-Now that we have blinked at least 1 LED, what about blinking multiple LEDS at the same time? The minimum that you need to develop is blinking at least two LEDs at two different rates. Although I am not going to give you a speed, you should probably pick a rate which is visible to a standard human. I really hope that you take this further and perform some of the extra work for this part of the lab exercise.
-
-
-# YOU NEED TO CREATE THE FOLLOWING FOLDERS
-* MSP430G2553
-* MSP(FILL IN WITH WHAT YOU ARE USING)
-
-## README
-Remember to replace this README with your README once you are ready to submit. I would recommend either making a copy of this file or taking a screen shot. There might be a copy of all of these README's in a folder on the top level depending on the exercise.
-
-## Extra Work
-When you take a look at the development boards, you are limited to what is built into the platform.
-
-### Even More LEDs
-Since up to this point you should have hopefully noticed that you are simply just controlling each pin on your processor. So... what is keeping you from putting an LED on each pin? Can you actually control the speed of each of these LEDs?
-
-### Patterned Lights
-If you can control a ton of LEDs, what is keeping you from having a little fun? Why not try and make something like a moving face or other moving object in lights. *CAUTION* I would only do this if you have finished the rest of the lab.
-
-### UART Pattern Control
-If you have been using UART, could you set which LEDs are on or off based off some UART command? Would you want to send an Array over UART such as [1 0 1 0] or would you want to send a byte that corresponds to the status? Can you not only say which LEDs are on, but also tell them to blink at a particular rate if they were on (so LED1 Blink every 100ms)?
+The code outlines how to make two LEDs blink at different frequencies. The code used on each board was basically the same, with
+the only difference being that on the G2, the LED pins are 1.0 and 1.6, while on the FR2311, they are on the 1.0 and 2.0. This
+is a pretty simple adjustment. All you have to do is edit the PxDIR lines and correspond them to the bits with the LEDS. The
+program works by running an infinite while loop, and nesting for loops inside them. The for loops increment an int, and when
+the int reaches a certain value, the LEDs will toggle. To make each LED toggle at a different rate, one for loop made one
+LED toggle at an arbitrary int, while the other for loop made the other LED toggle at a different integer value. If one int
+was twice as large as the other, that LED would blink twice as slow. 
